@@ -1,5 +1,4 @@
 var startButton = document.getElementById("Start-Page");
-// var quizContents = document.getElementById("quiz")
 var quizQuestions = [{
     q: "What's the first letter of the alphabet?",
     a: [{ text: "A", isCorrect: true },
@@ -45,10 +44,7 @@ function loadQuestion() {
     }
 }
 
-loadQuestion();
-
-startButton.addEventListener("click", loadQuestion());
-
-// startButton.addEventListener("click", function () {
-//     startButton.style.display = "none"
-// })
+startButton.addEventListener("click", function () {
+    startButton.style.display = "none";
+    loadQuestion();
+})
