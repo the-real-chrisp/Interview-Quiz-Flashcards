@@ -44,6 +44,34 @@ function loadQuestion() {
     }
 }
 
+function loadScore () {
+    var totalScore = document.getElementById("score");
+    totalScore.textContent = `You scored ${score} out of ${quizQuestions.length}`;
+}
+
+function nextQuestion () {
+    if (currentQuestion < quizQuestions.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+    } else {
+        document.getElementById("answers").remove();
+        document.getElementById("question").remove();
+        document.getElementById("button").remove();
+        loadScore();
+    }
+}
+
+function checkAns() {
+    var userAnswer = parseInt(document.querySelector('input[name="answer"]:checked').value)
+
+    if (quizQuestions[currentQuestion].a[userAnswer].isCorrect) {
+        score++;
+        nextQuestion();
+    } else {
+        nextQuestion();
+    }
+}
+
 startButton.addEventListener("click", function () {
     startButton.style.display = "none";
     loadQuestion();
